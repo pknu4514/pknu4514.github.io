@@ -4,188 +4,183 @@
 <title> 애견 미용 관리샵 코드</title>
 </head>
 <body>
+<h4> Customer 클래스 코드 </h4>
+<p>package org.javaro.project;</p>
 
-<p> Customer 클래스 코드 </p>
-<p>
-<li>package org.javaro.project;</li>
+<p>public class Customer {</p>
+	<p>private String name;</p>
+	<p>public Customer() {}</p>
+	<p>public String getName() {</p>
+		</p>return this.name;</p>
+	<p>}</p>
+	<p>public  void setName(String name) {</p>
+		<p>this.name = name;</p>
+	<p>}</p>
+	<p>public String toString() {</p>
+		<p>return "견주 이름="+this.getName();</p>
+	<p>}</p>
+<p>}</p>
 
-<li>public class Customer {</li>
-	<li>private String name;</li>
-	<li>public Customer() {}</li>
-	<li>public String getName() {</li>
-		</li>return this.name;</li>
-	}
-	public  void setName(String name) {
-		this.name = name;
-	}
-	public String toString() {
-		return "견주 이름="+this.getName();
-	}
-}
-</p>
+<h4> Day 클래스 코드 </h4>
+<p>package org.javaro.project;</p>
 
-<p> Day 클래스 코드 </p>
-<p>
-package org.javaro.project;
+<p>import org.javaro.project.Customer;</p>
 
-import org.javaro.project.Customer;
+<p>public class Day {</p>
+	<p>private String time;</p>
+	<p>private String pet;</p>
+	<p>private Customer customer;</p>
+	<p>public Day(String time) { this.time=time;}</p>
+	<p>public void setTime(String time) {this.time = time;}</p>
+	<p>public String getTime() {return this.time;}</p>
+	<p>public void setPet(String pet) {this.pet = pet;}</p>
+	<p>public String getPet() {return this.pet;}</p>
+	<p>public void setCustomer(Customer customer) {this.customer= customer;}</p>
+	<p>public Customer getCustomer() {return this.customer;}</p>
+	<p>public String toString() {</p>
+	<p>String available;</p>
+	<p>if(this.getCustomer() == null) {</p>
+	<p>available = "예약가능";</p>
+	<p>}else {</p>
+	<p>available ="견주=" +this.getCustomer().getName();</p>
+	<p>}</p>
+	<p>return "예약날짜="+this.getTime()+",강아지 이름="+this.getPet()+","+available;</p>
+	<p>}</p>
+<p>}</p>
 
-public class Day {
-	private String time;
-	private String pet;
-	private Customer customer;
-	public Day(String time) { this.time=time;}
-	public void setTime(String time) {this.time = time;}
-	public String getTime() {return this.time;}
-	public void setPet(String pet) {this.pet = pet;}
-	public String getPet() {return this.pet;}
-	public void setCustomer(Customer customer) {this.customer= customer;}
-	public Customer getCustomer() {return this.customer;}
-	public String toString() {
-	String available;
-	if(this.getCustomer() == null) {
-	available = "예약가능";
-	}else {
-	available ="견주=" +this.getCustomer().getName();
-	}
-	return "예약날짜="+this.getTime()+",강아지 이름="+this.getPet()+","+available;
-	}
-}
-</p>
+<h4>MyShop 클래스 코드</h4>
 
-<p>MyShop 클래스 코드</p>
-<p>
-package org.javaro.project;
+<p>package org.javaro.project;</p>
 
-	import java.util.ArrayList;
-	import org.javaro.project.Day;
-	import org.javaro.project.Customer;
-	public class MyShop {
-		public String storeName;
-		public ArrayList<Day>days;
-		public ArrayList<Customer>customers;
-		public MyShop(String storeName) {
-			this.storeName = storeName;
-			days = new ArrayList<Day>();
-			customers=new ArrayList<Customer>();
-		}
-		public String getStoreName() {
-			return this.storeName;}
-		public ArrayList<Day> getDays(){//book
-			return this.days;}
-		public ArrayList<Customer>getCustomers(){
-			return this.customers;}
-		public void addDay(Day day) {
-			this.getDays().add(day);}
-		public void removeDay(Day day) {
-			this.getDays().remove(day);
-		}
-		public void addCustomer(Customer customer) {
-			this.customers.add(customer);
-		}
-		public void removeCustomer(Customer customer) {
-			this.customers.remove(customer);
-		}
+	<p>import java.util.ArrayList;</p>
+	<p>import org.javaro.project.Day;</p>
+	<p>import org.javaro.project.Customer;</p>
+	<p>public class MyShop {</p>
+		<p>public String storeName;</p>
+		<p>public ArrayList<Day>days;</p>
+		<p>public ArrayList<Customer>customers;</p>
+		<p>public MyShop(String storeName) {</p>
+			<p>this.storeName = storeName;</p>
+			<p>days = new ArrayList<Day>();</p>
+			<p>customers=new ArrayList<Customer>();</p>
+		<p>}</p>
+		<p>public String getStoreName() {</p>
+			<p>return this.storeName;}</p>
+		<p>public ArrayList<Day> getDays(){</p>
+			<p>return this.days;}</p>
+		<p>public ArrayList<Customer>getCustomers(){</p>
+			<p>return this.customers;}</p>
+		<p>public void addDay(Day day) {</p>
+			<p>this.getDays().add(day);}</p>
+		<p>public void removeDay(Day day) {</p>
+			<p>this.getDays().remove(day);</p>
+		<p>}</p>
+		<p>public void addCustomer(Customer customer) {</p>
+			<p>this.customers.add(customer);</p>
+		<p>}</p>
+		<p>public void removeCustomer(Customer customer) {</p>
+			<p>this.customers.remove(customer);</p>
+		<p>}</p>
 
-	public boolean checkOut(Day day, Customer customer) {
-		if(day.getCustomer()==null)
-		{
-			day.setCustomer(customer);
-			return true;
-		}else {
-			return false;
-		}
-	}
+	<p>public boolean checkOut(Day day, Customer customer) {</p>
+		<p>if(day.getCustomer()==null)</p>
+		<p>{</p>
+			<p>day.setCustomer(customer);</p>
+			<p>return true;</p>
+		<p>}else {</p>
+			<p>return false;</p>
+		<p>}</p>
+	<p>}</p>
 
-	public boolean checkln(Day day) {
-		if(day.getCustomer() != null) {
-			day.setCustomer(null);
-			return true;
-		}else {
-			return false;
-		}
-	}
+	<p>public boolean checkln(Day day) {</p>
+		<p>if(day.getCustomer() != null) {</p>
+			<p>day.setCustomer(null);</p>
+			<p>return true;</p>
+		<p>}else {</p>
+			<p>return false;</p>
+		<p>}</p>
+	<p>}</p>
 	
-	public ArrayList<Day>getDaysForCustomer(Customer customer){
-	ArrayList<Day>result = new ArrayList<Day>();
-	for(Day aDay : this.getDays()) {
-	if((aDay.getCustomer()!=null)&&(aDay.getCustomer().getName().contentEquals(customer.getName()))) {
-	result.add(aDay);
-	}
-	}
-	return result;
-	}
-	public ArrayList<Day>getAvailableDays(){
-		ArrayList<Day> result = new ArrayList<Day>();
-		for(Day aDay : this.getDays()) {
-			if(aDay.getCustomer() == null) {
-				result.add(aDay);
-			}
-		}
-	return result;
-	}
+	<p>public ArrayList<Day>getDaysForCustomer(Customer customer){</p>
+	<p>ArrayList<Day>result = new ArrayList<Day>();</p>
+	<p>for(Day aDay : this.getDays()) {</p>
+	<p>if((aDay.getCustomer()!=null)&&(aDay.getCustomer().getName().contentEquals(customer.getName()))) {</p>
+	<p>result.add(aDay);</p>
+	<p>}</p>
+	<p>}</p>
+	<p>return result;</p>
+	<p>}</p>
+	<p>public ArrayList<Day>getAvailableDays(){</p>
+		<p>ArrayList<Day> result = new ArrayList<Day>();</p>
+		<p>for(Day aDay : this.getDays()) {</p>
+			<p>if(aDay.getCustomer() == null) {</p>
+				<p>result.add(aDay);</p>
+			<p>}</p>
+		<p>}</p>
+	<p>return result;</p>
+	<p>}</p>
 
-	public ArrayList<Day>getUnavailableDays(){
-		ArrayList<Day>result = new ArrayList<Day>();
-		for(Day aDay : this.getDays()) {
-			if(aDay.getCustomer()!=null) {
-				result.add(aDay);
-			}
-		}
-	return result;
-	}
-	public String toString() {
-		return this.getStoreName()+"의 예약 가능 시간="+
-		this.getStoreName()+"타임, 회원수="+
-		this.getCustomers().size()+"명";
-	}
+	<p>public ArrayList<Day>getUnavailableDays(){</p>
+		<p>ArrayList<Day>result = new ArrayList<Day>();</p>
+		<p>for(Day aDay : this.getDays()) {</p>
+			<p>if(aDay.getCustomer()!=null) {</p>
+				<p>result.add(aDay);</p>
+			<p>}</p>
+		<p>}</p>
+	<p>return result;</p>
+	<p>}</p>
+	<p>public String toString() {</p>
+		<p>return this.getStoreName()+"의 예약 가능 시간="+</p>
+		<p>this.getStoreName()+"타임, 회원수="+</p>
+		<p>this.getCustomers().size()+"명";</p>
+	<p>}</p>
 
-	public void printStatus() {
-		System.out.println("--애견 미용샵 예약 현황--\n"+this.toString());
-		for(Day aDay : this.getDays()) {
-			System.out.println(aDay);
-		}
-		for(Customer customer : this.getCustomers()) {
-			int count = this.getDaysForCustomer(customer).size();
-			System.out.println(customer+"은/는"+count+"번 예약잡음");
-		}
-		System.out.println("현재 예약 가능한 시간:" + this.getAvailableDays().size());
-		System.out.println("--리포트 종료--");
-	}
-}
-</p>
+	<p>public void printStatus() {</p>
+		<p>System.out.println("--애견 미용샵 예약 현황--\n"+this.toString());</p>
+		<p>for(Day aDay : this.getDays()) {</p>
+			<p>System.out.println(aDay);</p>
+		<p>}</p>
+		<p>for(Customer customer : this.getCustomers()) {</p>
+			<p>int count = this.getDaysForCustomer(customer).size();</p>
+			<p>System.out.println(customer+"은/는"+count+"번 예약잡음");</p>
+		<p>}</p>
+		<p>System.out.println("현재 예약 가능한 시간:" + this.getAvailableDays().size());</p>
+		<p>System.out.println("--리포트 종료--");</p>
+	<p>}</p>
+<p>}</p>
 
-<p> MyStore 클래스 코드</p>
-<p>
-package org.javaro.project;
-	import org.javaro.project.Day;
-	import org.javaro.project.MyShop;
-	import org.javaro.project.Customer;
-	public class MyStore {
-	public static void main(String[] args) {
-		MyShop myStore = new MyShop("미용샵");
-		Day day1 = new Day("part1: 14:00~15:00");
-		Day day2 = new Day("part2: 16:00~17:00");
-		day1.setPet("콩콩이");
-		day2.setPet("초코");
-		Customer customer1 = new Customer();
-		Customer customer2 = new Customer();
-		customer1.setName("이몽룡");
-		customer2.setName("변학도");
-		myStore.addDay(day1);
-		myStore.addDay(day2);
-		myStore.addCustomer(customer1);
-		myStore.addCustomer(customer2);
-		System.out.println("day1날짜를 name2 변학도에게 예약");
-		myStore.checkOut(day1,customer2);
-		myStore.printStatus();
-		System.out.println("오늘자 part1 관리 완료 ");
-		myStore.checkln(day1);
-		System.out.println("day2 날짜를 name1 이몽룡에게 예약");
-		myStore.checkOut(day2, customer1);
-		myStore.printStatus();
-	}
-}
-</p>
+
+<h4> MyStore 클래스 코드</h4>
+
+<p>package org.javaro.project;</p>
+	<p>import org.javaro.project.Day;</p>
+	<p>import org.javaro.project.MyShop;</p>
+	<p>import org.javaro.project.Customer;</p>
+	<p>public class MyStore {</p>
+	<p>public static void main(String[] args) {</p>
+		<p>MyShop myStore = new MyShop("미용샵");</p>
+		<p>Day day1 = new Day("part1: 14:00~15:00");</p>
+		<p>Day day2 = new Day("part2: 16:00~17:00");</p>
+		<p>day1.setPet("콩콩이");</p>
+		<p>day2.setPet("초코");</p>
+		<p>Customer customer1 = new Customer();</p>
+		<p>Customer customer2 = new Customer();</p>
+		<p>customer1.setName("이몽룡");</p>
+		<p>customer2.setName("변학도");</p>
+		<p>myStore.addDay(day1);</p>
+		<p>myStore.addDay(day2);</p>
+		<p>myStore.addCustomer(customer1);</p>
+		<p>myStore.addCustomer(customer2);</p>
+		<p>System.out.println("day1날짜를 name2 변학도에게 예약");</p>
+		<p>myStore.checkOut(day1,customer2);</p>
+		<p>myStore.printStatus();</p>
+		<p>System.out.println("오늘자 part1 관리 완료 ");</p>
+		<p>myStore.checkln(day1);</p>
+		<p>System.out.println("day2 날짜를 name1 이몽룡에게 예약");</p>
+		<p>myStore.checkOut(day2, customer1);</p>
+		<p>myStore.printStatus();</p>
+	<p>}</p>
+<p>}</p>
+
 </body>
 </html>
